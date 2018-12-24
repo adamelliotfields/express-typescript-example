@@ -1,10 +1,9 @@
-{::options parse_block_html="false" /}
-
 # Express TypeScript Sandbox
 > Experimenting with structuring and configuring an Express application using TypeScript.
 
 ### Introduction
 
+{::options parse_block_html="false" /}
 <div class="center">
   <blockquote class="twitter-tweet" data-lang="en">
     <p lang="en" dir="ltr">
