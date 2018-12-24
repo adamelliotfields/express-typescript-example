@@ -1,3 +1,5 @@
+{::options parse_block_html="false" /}
+
 # Express TypeScript Sandbox
 > Experimenting with structuring and configuring an Express application using TypeScript.
 
