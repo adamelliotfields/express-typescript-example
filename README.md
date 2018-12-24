@@ -1,4 +1,4 @@
-# Express TypeScript Sandbox
+# Express TypeScript Demo
 > Experimenting with structuring and configuring an Express application using TypeScript.
 
 ### Introduction

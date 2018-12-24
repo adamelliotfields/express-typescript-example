@@ -3,7 +3,7 @@ version: '3.5'
 services:
   app:
     build: .
-    container_name: express-typescript-sandbox
+    container_name: express-typescript-demo
     environment:
       - NODE_ENV=production
     ports:
@@ -11,4 +11,4 @@ services:
 
 networks:
   default:
-    name: express-typescript-sandbox
+    name: express-typescript-demo
