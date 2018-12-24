@@ -1,0 +1,17 @@
+### macOS ###
+.DS_Store
+
+### WebStorm ###
+.idea/
+
+### VS Code ###
+.vscode/
+
+### Node ###
+.env
+coverage/
+build/
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
