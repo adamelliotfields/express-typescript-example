@@ -1,21 +1,24 @@
 {
-  "env": {
-    "jest": true
-  },
-  "extends": [
-    "airbnb-base"
-  ],
-  "parser": "eslint-plugin-typescript/parser",
-  "plugins": [
-    "typescript"
-  ],
-  "rules": {
-    "no-unused-vars": ["off"],
-    "typescript/no-unused-vars": ["error", { "vars": "all", "args": "after-used", "ignoreRestSiblings": true }]
-  },
+  "extends": ["airbnb-base", "plugin:@typescript-eslint/recommended"],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
   "settings": {
-    "import/resolver": {
-      "typescript": {}
-    }
+    "import/resolver": { "typescript": {} }
+  },
+  "rules": {
+    "camelcase": "off",
+    "indent": "off",
+    "no-unused-vars": "off",
+    "no-use-before-define": "off",
+
+    "@typescript-eslint/camelcase": ["error", { "properties": "never" }],
+    "@typescript-eslint/indent": ["error", 2],
+    "@typescript-eslint/no-unused-vars": ["error", { "vars": "all", "args": "after-used", "ignoreRestSiblings": true }],
+    "@typescript-eslint/no-use-before-define": ["error", { "functions": true, "classes": true, "variables": true }],
+
+    "no-confusing-arrow": "off",
+    "no-process-exit": "off",
+
+    "import/prefer-default-export": "off"
   }
 }
