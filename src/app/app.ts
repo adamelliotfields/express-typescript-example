@@ -1,36 +1,42 @@
-import Express from 'express';
-import logger from 'morgan';
-import helmet from 'helmet';
-import cors from 'cors';
 import compression from 'compression';
+import cors from 'cors';
+import express from 'express';
+import helmet from 'helmet';
+import logger from 'morgan';
 
-import removeHeaders from '../middlewares/remove-headers';
-import indexRouter from '../routers/index-router';
-import messagesRouter from '../routers/messages-router';
-import { handleNotFound, handleError } from '../handlers/app-handlers';
+import { notFound, errors } from '../middleware';
+import { router } from '../router/router';
+import { normalizePort } from '../utils';
 
-const app = Express();
-const { NODE_ENV } = process.env;
+const app = express();
+const { HOST, PORT, NODE_ENV } = process.env;
 
+// Get port and host from environment
+const host = HOST as string;
+const port = normalizePort(PORT as string);
+
+// Store host and port
+app.set('port', port);
+app.set('host', host);
+
+// Don't log when running tests
 if (NODE_ENV !== 'test') {
   app.use(logger(NODE_ENV === 'production' ? 'combined' : 'dev'));
 }
 
-// Remove headers added by apicache
-app.use(removeHeaders(['apicache-store', 'apicache-version']));
 app.use(helmet());
 app.use(cors());
 app.use(compression());
-app.use(Express.json());
+// express.json is just bodyParser.json re-exported
+app.use(express.json());
 
-// Route handlers
-app.use(indexRouter);
-app.use(messagesRouter);
+// Routes
+app.use(router);
 
-// Catch 404 and forward to error handler
-app.use(handleNotFound);
+// Handle 404
+app.use(notFound());
 
-// Error handler
-app.use(handleError);
+// Handle all errors
+app.use(errors());
 
-export default app;
+export { app };
